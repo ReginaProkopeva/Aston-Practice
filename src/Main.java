@@ -40,14 +40,16 @@ public class Main {
         bowl.addFood(10);
         System.out.println("Еда в миске: " + bowl.getFoodAmount());
 
+
         // Задача 2
-        Shape circle = new Circle(5);
-        Shape rectangle = new Rectangle(4, 6);
-        Shape triangle = new Triangle(3, 4, 5);
+        Shape circle = new Circle(5, "Красный", "Синий");
+        Shape rectangle = new Rectangle(4, 6, "Зелёный", "Чёрный");
+        Shape triangle = new Triangle(3, 4, 5, "Жёлтый", "Фиолетовый");
 
 
-        circle.printCharacteristics("Красный", "Синий");
-        rectangle.printCharacteristics("Зелёный", "Чёрный");
-        triangle.printCharacteristics("Жёлтый", "Фиолетовый");
+        circle.printCharacteristics();
+        rectangle.printCharacteristics();
+        triangle.printCharacteristics();
+
     }
 }
