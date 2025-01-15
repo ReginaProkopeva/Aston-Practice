@@ -2,54 +2,47 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        // Задача 1
-        Dog dogBobik = new Dog("Бобик");
-        Dog dogTuzik = new Dog("Тузик");
-        Cat catMurka = new Cat("Мурка");
-        Cat catBarsik = new Cat("Барсик");
+        String[][] validArray = {
+                {"1", "2", "3", "4"},
+                {"5", "6", "7", "8"},
+                {"9", "10", "11", "12"},
+                {"13", "14", "15", "16"}
+        };
 
 
-        dogBobik.run(150);
-        dogBobik.swim(8);
+        String[][] invalidSizeArray = {
+                {"1", "2", "3"},
+                {"4", "5", "6"},
+                {"7", "8", "9"}
+        };
 
 
-        catMurka.run(250);
-        catMurka.swim(5);
+        String[][] invalidDataArray = {
+                {"1", "2", "3", "4"},
+                {"5", "six", "7", "8"},
+                {"9", "10", "11", "12"},
+                {"13", "14", "15", "16"}
+        };
 
 
-        System.out.println("Создано собак: " + Dog.getDogCount());
-        System.out.println("Создано котов: " + Cat.getCatCount());
-        System.out.println("Создано животных: " + Animal.getAnimalCount());
-
-
-        // Работа с миской и котами
-        Bowl bowl = new Bowl(15);
-        Cat[] cats = {catMurka, catBarsik};
-
-
-        for (Cat cat : cats) {
-            cat.eat(bowl);
+        try {
+            System.out.println("Сумма элементов массива: " + ArrayProcessing.processArray(validArray));
+        } catch (MyArraySizeException | MyArrayDataException e) {
+            System.err.println("Ошибка: " + e.getMessage());
         }
 
 
-        for (Cat cat : cats) {
-            System.out.println(cat.getName() + " сытость: " + cat.isSatiated());
+        try {
+            System.out.println("Сумма элементов массива: " + ArrayProcessing.processArray(validArray));
+        } catch (MyArraySizeException | MyArrayDataException e) {
+            System.err.println("Ошибка: " + e.getMessage());
         }
 
 
-        bowl.addFood(10);
-        System.out.println("Еда в миске: " + bowl.getFoodAmount());
-
-
-        // Задача 2
-        Shape circle = new Circle(5, "Красный", "Синий");
-        Shape rectangle = new Rectangle(4, 6, "Зелёный", "Чёрный");
-        Shape triangle = new Triangle(3, 4, 5, "Жёлтый", "Фиолетовый");
-
-
-        circle.printCharacteristics();
-        rectangle.printCharacteristics();
-        triangle.printCharacteristics();
-
+        try {
+            System.out.println("Сумма элементов массива: " + ArrayProcessing.processArray(validArray));
+        } catch (MyArraySizeException | MyArrayDataException e) {
+            System.err.println("Ошибка: " + e.getMessage());
+        }
     }
 }
