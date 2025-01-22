@@ -3,59 +3,34 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-        // Создаем SortedSet для хранения уникальных слов в отсортированном порядке
-        SortedSet<String> sortedSet = new TreeSet<>();
-
-        // Добавляем слова в коллекцию с помощью метода set.add()
-        sortedSet.add("apple");
-        sortedSet.add("banana");
-        sortedSet.add("apple");  // Повторяющееся слово
-        sortedSet.add("orange");
-        sortedSet.add("grape");
-        sortedSet.add("banana");  // Повторяющееся слово
-        sortedSet.add("kiwi");
-        sortedSet.add("pear");
-        sortedSet.add("kiwi");  // Повторяющееся слово
-        sortedSet.add("apple");  // Повторяющееся слово
-        sortedSet.add("melon");
-        sortedSet.add("orange");  // Повторяющееся слово
-        sortedSet.add("grape");  // Повторяющееся слово
-        sortedSet.add("watermelon");
-        sortedSet.add("cherry");
-        sortedSet.add("banana");  // Повторяющееся слово
-        sortedSet.add("pear");  // Повторяющееся слово
-        sortedSet.add("peach");
-        sortedSet.add("apple");  // Повторяющееся слово
-        sortedSet.add("grape");  // Повторяющееся слово
+        // Задача 1
+        // Создаем массив слов
+        String[] words = {
+                "apple", "banana", "apple", "orange", "kiwi",
+                "banana", "grape", "kiwi", "pear", "apple",
+                "peach", "orange", "plum", "peach", "apple"
+        };
 
 
-        // Создаем список для подсчета количества вхождений
-        List<String> words = Arrays.asList(
-                "apple", "banana", "apple", "orange", "grape",
-                "banana", "kiwi", "pear", "kiwi", "apple",
-                "melon", "orange", "grape", "watermelon", "cherry",
-                "banana", "pear", "peach", "apple", "grape"
-        );
-
-
-        // Выводим список уникальных слов
-        System.out.println("Список уникальных слов:");
-        for (String word : sortedSet) {
-            System.out.println(word);
-        }
-
-
-        // Подсчитываем количество вхождений каждого слова
+        // Используем SortedSet для хранения уникальных слов в отсортированном порядке
+        SortedSet<String> uniqueWords = new TreeSet<>();
         Map<String, Integer> wordCount = new HashMap<>();
+
+
         for (String word : words) {
+            uniqueWords.add(word);
             wordCount.put(word, wordCount.getOrDefault(word, 0) + 1);
         }
 
 
+        // Выводим список уникальных слов (отсортированный)
+        System.out.println("Уникальные слова (отсортированные): " + uniqueWords);
+
+
         // Выводим количество вхождений каждого слова
-        System.out.println("\nКоличество вхождений каждого слова:");
-        for (Map.Entry<String, Integer> entry : wordCount.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
+        System.out.println("Количество вхождений слов:");
+        for (String word : uniqueWords) {
+            System.out.println(word + ": " + wordCount.get(word));
         }
 
         // Задача 2
