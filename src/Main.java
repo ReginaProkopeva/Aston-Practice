@@ -1,37 +1,33 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
 
-        // Задача 1
-        // Создаем массив слов
+        //Задача 1
+        // Создаем массив слов (с повторяющимися)
         String[] words = {
-                "apple", "banana", "apple", "orange", "kiwi",
-                "banana", "grape", "kiwi", "pear", "apple",
-                "peach", "orange", "plum", "peach", "apple"
+                "яблоко", "груша", "апельсин", "яблоко", "банан",
+                "вишня", "яблоко", "банан", "груша", "слива",
+                "груша", "абрикос", "виноград", "банан", "вишня",
+                "персик", "персик", "яблоко"
         };
 
 
-        // Используем SortedSet для хранения уникальных слов в отсортированном порядке
-        SortedSet<String> uniqueWords = new TreeSet<>();
-        Map<String, Integer> wordCount = new HashMap<>();
+        // Преобразуем массив в Set для получения уникальных слов
+        Set<String> uniqueWords = new HashSet<>(Arrays.asList(words));
+        System.out.println("Список уникальных слов: " + uniqueWords);
 
 
-        for (String word : words) {
-            uniqueWords.add(word);
-            wordCount.put(word, wordCount.getOrDefault(word, 0) + 1);
-        }
-
-
-        // Выводим список уникальных слов (отсортированный)
-        System.out.println("Уникальные слова (отсортированные): " + uniqueWords);
+        // Считаем количество вхождений каждого слова с использованием Stream API
+        Map<String, Long> wordCount = Arrays.stream(words)
+                .collect(Collectors.groupingBy(word -> word, Collectors.counting()));
 
 
         // Выводим количество вхождений каждого слова
         System.out.println("Количество вхождений слов:");
-        for (String word : uniqueWords) {
-            System.out.println(word + ": " + wordCount.get(word));
-        }
+        wordCount.forEach((word, count) -> System.out.println(word + ": " + count));
+
 
         // Задача 2
         PhoneDirectory phoneDirectory = new PhoneDirectory();
@@ -58,6 +54,13 @@ public class Main {
         phoneDirectory.add("Petrov", "990123");
         phoneDirectory.add("Sidorov", "101234");
         phoneDirectory.add("Kuznetsov", "211345");
+
+        // Попытка добавить дублирующий номер
+        phoneDirectory.add("Петров", "211345");
+
+
+        // Попытка добавить одинаковый номер для одного человека
+        phoneDirectory.add("Иванов", "223456");
 
 
         // Получаем номера по фамилиям
