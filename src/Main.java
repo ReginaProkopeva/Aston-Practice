@@ -7,7 +7,7 @@ public class Main {
         int number = scanner.nextInt();
 
         try {
-            long result = FactorialCalculator.factorial(number);
+            long result = Factorial.factorial(number);
             System.out.println("Факториал " + number + " = " + result);
         } catch (IllegalArgumentException e) {
             System.out.println("Ошибка: " + e.getMessage());
